@@ -19,8 +19,6 @@ const run = async () => {
         await client.connect();
         const clothsCollection = client.db("Todo-App").collection("todo");
 
-        console.log("cuneccted");
-
         // get all data 
         app.get("/todos", async (req, res) => {
             const query = {}
