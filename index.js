@@ -57,7 +57,19 @@ const run = async () => {
             }
         })
 
-        // update data 
+        // edit data 
+        app.put("/todoEdit/:id", async (req, res) => {
+            const id = req.params.id;
+            const upTodo = req.body;
+            const filter = { _id: ObjectId(id) }
+            const updateDoc = {
+                $set: upTodo
+            };
+            const result = await todoCollection.updateOne(filter, updateDoc);
+            res.send(result)
+        })
+
+        // complete data 
         app.put("/todo/:id", async (req, res) => {
             const id = req.params.id
             const filter = { _id: ObjectId(id) }
